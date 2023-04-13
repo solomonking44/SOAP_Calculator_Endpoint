@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.axis1.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.axis1.org" xmlns:intf="http://service.axis1.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.axis1.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="Add">
+    <complexType>
+     <sequence>
+      <element name="numberOne" type="xsd:int"/>
+      <element name="numberTwo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="AddResponse">
+    <complexType>
+     <sequence>
+      <element name="AddReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="Subtract">
+    <complexType>
+     <sequence>
+      <element name="numberOne" type="xsd:int"/>
+      <element name="numberTwo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SubtractResponse">
+    <complexType>
+     <sequence>
+      <element name="SubtractReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="AddResponse">
+
+      <wsdl:part element="impl:AddResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="AddRequest">
+
+      <wsdl:part element="impl:Add" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SubtractRequest">
+
+      <wsdl:part element="impl:Subtract" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SubtractResponse">
+
+      <wsdl:part element="impl:SubtractResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Calculator">
+
+      <wsdl:operation name="Add">
+
+         <wsdl:input message="impl:AddRequest" name="AddRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:AddResponse" name="AddResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Subtract">
+
+         <wsdl:input message="impl:SubtractRequest" name="SubtractRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SubtractResponse" name="SubtractResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalculatorSoapBinding" type="impl:Calculator">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="Add">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="AddRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="AddResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Subtract">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SubtractRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SubtractResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalculatorService">
+
+      <wsdl:port binding="impl:CalculatorSoapBinding" name="Calculator">
+
+         <wsdlsoap:address location="http://localhost:8080/Calculator/services/Calculator"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
